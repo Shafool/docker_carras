@@ -1,0 +1,16 @@
+$TTL 1D
+@	IN SOA dns.mype.com.pe. hostmaster.mype.com.pe. (
+	201507251	;serial
+	8H		;refresh
+	4H		;refresh
+	4W		;expiracion
+	1D		;minimo
+	)
+
+	NS dns.mype.com.pe.
+
+localhost	A	127.0.0.1
+dns		A	192.168.1.254
+www		A	192.168.1.252
+www.rrhh	A	192.168.1.252
+www.planificacion	A	192.168.1.252

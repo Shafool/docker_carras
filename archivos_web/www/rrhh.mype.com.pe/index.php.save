@@ -1,0 +1,65 @@
+<?php
+	$s = "localhost";
+	$u = "root";
+	$c = "123";
+	$bd = "db_mype"		;
+	$opcion = $_GET['unidad'];
+	$conexion = mysqli_connect($s, $u, $c, $bd);
+	$consulta = "select * from tpersonal where unidad='$opcion'";
+	$query = mysqli_query($conexion, $consulta);
+?>
+
+<!DOCTYPE html> 
+<html lang="es">
+	<head>
+		<meta charset="utf-8"/>
+		<title> Portal de mype.com.pe </title>
+		<link rel="stylesheet" href="estilo.css">
+	</head>
+	<body>
+		<div id="agrupar">
+			<header id="cabecera">
+				<h1> Bienvenidos a mype.com.pe</h1>
+			</header>
+			<nav id="menu">
+				<ul>
+					<li>Principal</li>
+					<li>Servicios</li>
+					<li>Productos</li>
+					<li>Comunidad</li>
+					<li>Contactenos</li>
+				</ul>
+			</nav>
+			<section id="seccion">
+				<article>
+
+					<h1>Recursos Humanos</h1>
+					<form action="index.php" method="GET">
+						<select name="unidad" id="escoger">
+							<option value="rrhh" selected>Recursos Humanos</option>
+							<option value="finanzas" >Finanzas</option>
+							<option value="logistica">Logística</option>
+						</select>
+						<button>Buscar</button>
+					</form>
+
+					<h2>Unidad de Recursos Humanos</h2>
+					<ul>
+						<?php
+						$result = mysqli_fetch_array($query);
+						while($result){							<li id="lista">
+							echo "ID: "." ".$idTrabajador.", ".$result['Nombre']." ".$result['apPaterno'];
+							</li>
+						<?php
+						}
+						?>
+					</ul>
+				</article>
+			</section>
+
+			<footer id="pie">
+				<small>mype.com.pe - Derechos reservados &copy; 2015</small>   
+			</footer>
+		</div>
+	</body>
+</html>
